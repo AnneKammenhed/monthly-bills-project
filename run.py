@@ -17,19 +17,21 @@ SHEET = GSPREAD_CLIENT.open("monthly_bills")
 def collect_data():
     """
     Function to collect data about bills for 
-    rent, electricity and telephone from user.
+    rent and telephone from user. Also number of eoployees.
     """
     
     print(f"Welcome to Annes monthly cost calculator!")
 
-
+collect_data()
 bills = SHEET.worksheet("bills")
 data = bills.get_all_values()
 print(data)
 
-# check if data is valid print error if not
+# check if data is valid print error if not and return to beginning
 
-# add cost to worksheet
+# add function to multiply number of employees * 40000 for salary
+
+# add rent, salary, telephone to worksheet
 
 # calculate sum
 
@@ -37,8 +39,6 @@ print(data)
 
 # return sum to user
 
-# calculate average
+# calculate six month average
 
 # return average to user
-
-collect_data()
