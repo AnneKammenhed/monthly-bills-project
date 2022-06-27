@@ -23,10 +23,26 @@ def collect_data():
     
     print(f"Welcome to enter Your monthly bills!\n")
 
-    rent_str = input("Enter cost for rent here:")
-    employees_str = input("Enter the number of employees here:")
-    telephone_str = input("Enter cost for telephone here:")
-    print(f"The rent for this month is {rent_str}, the number of employees is {employees_str} and the telephone bills are {telephone_str}.\n")
+    rent_str = int(input("Enter cost for rent:"))
+    employees_str = int(input("Enter the number of employees:"))
+    telephone_str = int(input("Enter cost for telephone:"))
+    
+    cost_data = [rent_str, employees_str*40000, telephone_str]
+    validate_data(cost_data)
+
+def validate_data(values):
+    """
+    Function to validate that all the the data for monthly bills for rent telephone and 
+    employees are given. Also converts the string to integers.
+    """
+    print(values)
+    try:
+        if len(values) != 3:
+            raise ValueError(
+                f"You need to fill in all three values and you provided {len(values)}."
+            )
+    except ValueError as e:
+        print(f"Invalid data {e}, please try again with integers.")
 
 collect_data()
 
