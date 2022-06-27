@@ -16,16 +16,19 @@ SHEET = GSPREAD_CLIENT.open("monthly_bills")
 
 def collect_data():
     """
-    Function to collect data about bills for 
-    rent and telephone from user. Also number of eoployees.
+    Function to collect data about monthly bills for 
+    rent and telephone. It also collects number of employees.
+    from user
     """
     
-    print(f"Welcome to Annes monthly cost calculator!")
+    print(f"Welcome to enter Your monthly bills!\n")
+
+    rent_str = input("Enter cost for rent here:")
+    employees_str = input("Enter the number of employees here:")
+    telephone_str = input("Enter cost for telephone here:")
+    print(f"The rent for this month is {rent_str}, the number of employees is {employees_str} and the telephone bills are {telephone_str}.\n")
 
 collect_data()
-bills = SHEET.worksheet("bills")
-data = bills.get_all_values()
-print(data)
 
 # check if data is valid print error if not and return to beginning
 
