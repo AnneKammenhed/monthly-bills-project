@@ -18,7 +18,7 @@ def collect_data():
     """
     Function to collect data about monthly bills for 
     rent and telephone. It also collects number of employees.
-    from user
+    from user and returns this number times the salary. All inputs has to be integers.
     """
     
     print(f"Welcome to enter Your monthly bills!\n")
@@ -33,11 +33,12 @@ def collect_data():
 def validate_data(values):
     """
     Function to validate that all the the data for monthly bills for rent telephone and 
-    employees are given. Also converts the string to integers.
+    employees are given. 
     """
     print(values)
+
     try:
-        if len(values) != 3:
+        if len(values) == "":
             raise ValueError(
                 f"You need to fill in all three values and you provided {len(values)}."
             )
