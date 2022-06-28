@@ -18,7 +18,8 @@ def collect_data():
     """
     Function to collect data about monthly bills for 
     rent and telephone. It also collects number of employees.
-    from user and returns this number times the salary. All inputs has to be integers.
+    from user and returns this number times the salary. It also 
+    validates that all input values are integers and returns standard message.
     """
     print(f"Welcome! Enter Your monthly bills!\n")
 
@@ -36,30 +37,51 @@ def collect_data():
     
 def validate_rent_data(rent_data):
     """
-    Function to validate that the data for monthly bills for rent. Print error if not and return to the beginning.
+    Function to validate that the data for monthly bills for rent i over 1000SEK. 
+    Prints error if not and return to ask for rent .
 
     """
-    if rent_data <= 1000:
-        print("Too few numbers. Add a few more!")
-    else:
-        print(f"You wrote {rent_data}. Thank you.")
+    try:
+        if rent_data <= 1000:
+            raise ValueError(
+                f"You wrote {rent_data} SEK which is too cheap!"
+            )
+        else:
+            print(f"You wrote {rent_data} SEK. Thank you!")
+
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again!")
 
 def validate_employee_data(employee_str, employee_data):
-    if employee_data >= 1000000:
-        print(f"Impossible! With the answer {employee_str}, the cost would be {employee_data} and it is over your budget. Try again")
-    else:
-        print(f"You answered {employee_str}. With a monthly salary of 40000 SEK, the cost is {employee_data}")
-
+    """
+    Function to validate that the data for monthly bills for salary is over 1000000 SEK. 
+    Print error if it is  and return to ask for number of employees.
+    """
+    try:
+        if employee_data >= 1000000:
+            raise ValueError(
+                f"Impossible! With the answer {employee_str}, the cost would be {employee_data} SEK and it is over your budget."
+            )
+        else:
+            print(f"You answered {employee_str}. With a monthly salary of 40000 SEK, the cost is {employee_data}")
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again!")
 
 def validate_phone_data(phone_data):
     """
-    Function to validate that the data for monthly bills for rent. Print error if not and return to the beginning.
+    Function to validate that the data for monthly bills for phone is over 100 SEK. 
+    Print error if not and return to ask for phone cost.
 
     """
-    if phone_data <= 100:
-        print("Too few numbers. Add a few more!")
-    else:
-        print(f"You wrote {phone_data}. Thank you.")
+    try:
+        if phone_data <= 100:
+            raise ValueError(
+                f"You answered {phone_data} SEK which is too little."
+            )
+        else:
+            print(f"You wrote {phone_data} SEK. Thank you!")
+    except ValueError as e:
+        print(f"Invalid data: {e}, please try again!")
 
 def update_bills_worksheet(data):
     """
