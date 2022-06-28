@@ -43,6 +43,8 @@ def collect_data():
 
         if validate_phone_data(phone_data):
             break
+
+    return rent_data, employee_data, phone_data
     
 def validate_rent_data(rent_data):
     """
@@ -122,4 +124,6 @@ def update_bills_worksheet(data):
 
 #remember to call the functions here:
 
-collect_data()
+data = collect_data()
+cost_data = [int(num) for num in data]
+update_bills_worksheet(cost_data)
