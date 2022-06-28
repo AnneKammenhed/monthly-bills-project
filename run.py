@@ -23,17 +23,26 @@ def collect_data():
     """
     print(f"Welcome! Enter Your monthly bills!\n")
 
-    rent_str = int(input("Enter cost for rent:"))
-    rent_data = rent_str
-    validate_rent_data(rent_data)
+    while True:
+        rent_str = int(input("Enter cost for rent:"))
+        rent_data = rent_str
 
-    employee_str = int(input("Enter number of employees:"))
-    employee_data = employee_str*40000
-    validate_employee_data(employee_str, employee_data)
+        if validate_rent_data(rent_data):
+            break
     
-    phone_str = int(input("Enter cost for phone bill:"))
-    phone_data = phone_str
-    validate_phone_data(phone_data)
+    while True:
+        employee_str = int(input("Enter number of employees:"))
+        employee_data = employee_str*40000
+
+        if validate_employee_data(employee_str, employee_data):
+            break
+    
+    while True:
+        phone_str = int(input("Enter cost for phone bill:"))
+        phone_data = phone_str
+
+        if validate_phone_data(phone_data):
+            break
     
 def validate_rent_data(rent_data):
     """
@@ -44,13 +53,16 @@ def validate_rent_data(rent_data):
     try:
         if rent_data <= 1000:
             raise ValueError(
-                f"You wrote {rent_data} SEK which is too cheap!"
+                f"You wrote {rent_data} SEK which is too cheap"
             )
         else:
             print(f"You wrote {rent_data} SEK. Thank you!")
 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again!")
+        return False
+    
+    return True
 
 def validate_employee_data(employee_str, employee_data):
     """
@@ -60,12 +72,15 @@ def validate_employee_data(employee_str, employee_data):
     try:
         if employee_data >= 1000000:
             raise ValueError(
-                f"Impossible! With the answer {employee_str}, the cost would be {employee_data} SEK and it is over your budget."
+                f"Impossible! With the answer {employee_str}, the cost would be {employee_data} SEK and it is over your budget"
             )
         else:
-            print(f"You answered {employee_str}. With a monthly salary of 40000 SEK, the cost is {employee_data}")
+            print(f"You answered {employee_str} and the cost is {employee_data} SEK")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again!")
+        return False
+    
+    return True
 
 def validate_phone_data(phone_data):
     """
@@ -76,12 +91,15 @@ def validate_phone_data(phone_data):
     try:
         if phone_data <= 100:
             raise ValueError(
-                f"You answered {phone_data} SEK which is too little."
+                f"You answered {phone_data} SEK which is too little"
             )
         else:
             print(f"You wrote {phone_data} SEK. Thank you!")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again!")
+        return False
+    
+    return True
 
 def update_bills_worksheet(data):
     """
