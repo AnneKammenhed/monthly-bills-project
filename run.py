@@ -21,34 +21,42 @@ def collect_data():
     from user and returns this number times the salary. All inputs has to be integers.
     """
     
-    print(f"Welcome to enter Your monthly bills!\n")
+    while True:
+        print(f"Welcome! Enter Your monthly bills!\n")
 
-    rent_str = int(input("Enter cost for rent:"))
-    employees_str = int(input("Enter the number of employees:"))
-    telephone_str = int(input("Enter cost for telephone:"))
+        rent_str = input("Enter cost for rent:")
+        employees_str = input("Enter the number of employees:")
+        telephone_str = input("Enter cost for telephone:")
+    
+        cost_data = rent_str + employees_str + telephone_str
         
-    cost_data = [rent_str, employees_str*40000, telephone_str]
-        
-    validate_data(cost_data)
+        if validate_data(cost_data):
+            print("Data is valid")
+            break
+
+    return cost_data
         
 def validate_data(values):
     """
     Function to validate that all the the data for monthly bills for rent telephone and 
-    employees are given. Print error if not and return to beginning.
+    employees are given. Print error if not and return to the beginning.
 
     """
-    print(values)
-
+   
     try:
-        if len(values) == int(values) != 3:
+        [int(value)for value in values]
+        if len(values) != 3:
             raise ValueError(
-                f"You need to fill in all three values and you provided {len(values)}."
+                f"You need to fill in all 3 values and you provided {len(values)}"
             )
     except ValueError as e:
         print(f"Invalid data {e}, please try again with integers.")
+        return False
+    
+    return True
 
 
-def update_bills_worksheet():
+def update_bills_worksheet(data):
     """
     add rent, salary, telephone to worksheet
     """
@@ -56,11 +64,6 @@ def update_bills_worksheet():
     bills_worksheet = SHEET.worksheet("bills")
     bills_worksheet.append_row(data)
     print("This months bills have been updated.")
-
-
-#remember to call the functions here:
-collect_data()
-update_bills_worksheet(cost_data)
 
 # calculate sum
 
@@ -71,3 +74,9 @@ update_bills_worksheet(cost_data)
 # calculate six month average
 
 # return average to user
+
+#remember to call the functions here:
+
+data = collect_data()
+cost_data = [int(num) for num in data]
+update_bills_worksheet(cost_data)
