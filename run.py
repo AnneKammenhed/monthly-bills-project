@@ -26,32 +26,41 @@ def collect_data():
     rent_str = int(input("Enter cost for rent:"))
     employees_str = int(input("Enter the number of employees:"))
     telephone_str = int(input("Enter cost for telephone:"))
-    
+        
     cost_data = [rent_str, employees_str*40000, telephone_str]
+        
     validate_data(cost_data)
-
+        
 def validate_data(values):
     """
     Function to validate that all the the data for monthly bills for rent telephone and 
-    employees are given. 
+    employees are given. Print error if not and return to beginning.
+
     """
     print(values)
 
     try:
-        if len(values) == "":
+        if len(values) == int(values) != 3:
             raise ValueError(
                 f"You need to fill in all three values and you provided {len(values)}."
             )
     except ValueError as e:
         print(f"Invalid data {e}, please try again with integers.")
 
+
+def update_bills_worksheet():
+    """
+    add rent, salary, telephone to worksheet
+    """
+    print("Updating worksheet with the bills for this month.....")
+    bills_worksheet = SHEET.worksheet("bills")
+    bills_worksheet.append_row(data)
+    print("This months bills have been updated.")
+
+
+#remember to call the functions here:
 collect_data()
-
-# check if data is valid print error if not and return to beginning
-
-# add function to multiply number of employees * 40000 for salary
-
-# add rent, salary, telephone to worksheet
+update_bills_worksheet(cost_data)
 
 # calculate sum
 
