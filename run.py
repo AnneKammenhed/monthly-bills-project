@@ -109,19 +109,20 @@ def update_bills_worksheet(data):
     """
     add rent, salary, telephone to worksheet
     """
-    print("Updating worksheet with the bills for this month.....")
+    print("Updating worksheet with the bills for this month....")
     bills_worksheet = SHEET.worksheet("bills")
     bills_worksheet.append_row(data)
     print("This months bills have been updated.")
 
-def calculate_sum(bills_row):
+def update_sum_worksheet(data):
     """
-    Function to calculate sum for this months bills.
+    Function to calculate sum for this months bills and add to sum worksheet.
     """
     print("Calculating the sum for this month...")
-    print(f"Bills row: {bills_row}")
-
-# add sum to worksheet
+    monthly_sum = sum(data)
+    sum_worksheet = SHEET.worksheet("sum")
+    sum_worksheet.append_row(data)
+    print(f"This months sum is {monthly_sum} SEK.")
 
 # return sum to user
 
@@ -136,6 +137,7 @@ def main ():
     data = collect_data()
     cost_data = [int(num) for num in data]
     update_bills_worksheet(cost_data)
-    calculate_sum(cost_data)
+    sum_data = [int(num) for num in data]
+    update_sum_worksheet(sum_data)
 
 main()
