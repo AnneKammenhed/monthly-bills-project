@@ -128,8 +128,7 @@ def update_sum_worksheet(data):
 
 def get_6_month_average():
     """
-    Get the last six entries from sum-worksheet. 
-    Return the data as a list of lists.
+    Return the last six entries from sum-worksheet. 
     """
     sum = SHEET.worksheet("sum")
 
@@ -143,15 +142,12 @@ def update_average_worksheet(data):
     worksheet and return average to user
     """
     print("Calculating six month average...")
-    six_month_average = []
-
-    for column in data:
-        int_column = [int(num) for num in column]
-        average = sum(int_column) / len(int_column)
-        average_num = average * 1.1
-        six_month_average.append(round(average_num))
+    
+    six_month_average = get_6_month_average()
 
     print(f"The six month average is {six_month_average} SEK.")
+
+    #six_month_average.append(round(average_num))
 
     return six_month_average
 
@@ -166,11 +162,7 @@ def main ():
     
     update_sum_worksheet(cost_data)
 
-    sum_columns = get_last_6_entries_sum()
-    average_data = update_average_worksheet(sum_columns)
-    update_average_worksheet(average_data)
+    sum_columns = get_6_month_average()
+    update_average_worksheet(sum_columns)
 
-
-#main()
-
-print(get_6_month_average())
+main()
