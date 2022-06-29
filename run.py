@@ -142,14 +142,13 @@ def update_average_worksheet(data):
     worksheet and return average to user
     """
     print("Calculating six month average...")
-    
-    six_month_average = get_6_month_average()
 
-    print(f"The six month average is {six_month_average} SEK.")
+    last_six_entries = get_6_month_average()
+    #average = [sum(last_six_entries)]
 
-    #six_month_average.append(round(average_num))
+    print(f"The six month average is {last_six_entries} SEK.")
 
-    return six_month_average
+    return last_six_entries
 
 def main ():
     """
@@ -162,7 +161,7 @@ def main ():
     
     update_sum_worksheet(cost_data)
 
-    sum_columns = get_6_month_average()
-    update_average_worksheet(sum_columns)
+    average = get_6_month_average()
+    update_average_worksheet(average)
 
 main()
