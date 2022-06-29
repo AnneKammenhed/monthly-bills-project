@@ -116,28 +116,42 @@ def update_bills_worksheet(data):
 
 def update_sum_worksheet(data):
     """
-    Function to calculate sum for this months bills and add to sum worksheet.
+    Function to calculate sum for this months bills and add to sum 
+    worksheet. Return sum to user.
+
     """
     print("Calculating the sum for this month...")
-    monthly_sum = sum(data)
+    monthly_sum = [sum(data)]
     sum_worksheet = SHEET.worksheet("sum")
     sum_worksheet.append_row(data)
     print(f"This months sum is {monthly_sum} SEK.")
 
-# return sum to user
+    return monthly_sum
 
-# calculate six month average
-
-# return average to user
+def update_average_worksheet(data):
+    """
+    Function to calculate six month average, add average to 
+    worksheet and return average to user
+    """
+    print("Calculating six month average...")
+    six_month_average = sum(data)
+    average_worksheet = SHEET.worksheet("average")
+    average_worksheet.append_row(data)
+    print(f"The average is {six_month_average} SEK.")
 
 def main ():
     """
     Function to remember to call the functions here:
     """
     data = collect_data()
+    
     cost_data = [int(num) for num in data]
     update_bills_worksheet(cost_data)
-    sum_data = [int(num) for num in data]
+    
+    sum_data = update_sum_worksheet(cost_data)
     update_sum_worksheet(sum_data)
+    
+    average_data = [int(num) for num in data]
+    update_average_worksheet(average_data)
 
 main()
