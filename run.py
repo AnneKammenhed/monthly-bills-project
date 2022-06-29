@@ -16,29 +16,30 @@ SHEET = GSPREAD_CLIENT.open("monthly_bills")
 
 def collect_data():
     """
-    Function to collect data about monthly bills for 
-    rent and telephone. It also collects number of employees.
-    from user and returns this number times the salary. It also 
-    validates that all input values are integers and returns standard message.
+    Function to collect data about monthly bills for rent and telephone. 
+    It also collects number of employees from user and returns this number 
+    multiplied by an average salary of 40 000 SEK. The function loops back 
+    to the question if the data is not valid. The function requires all input 
+    values to be integers and returns standard message if not.
     """
     print(f"Welcome! Enter Your monthly bills!\n")
 
     while True:
-        rent_str = int(input("Enter cost for rent:"))
+        rent_str = int(input("Enter cost for rent this month:"))
         rent_data = rent_str
 
         if validate_rent_data(rent_data):
             break
     
     while True:
-        employee_str = int(input("Enter number of employees:"))
+        employee_str = int(input("Enter number of employees this month:"))
         employee_data = employee_str*40000
 
         if validate_employee_data(employee_str, employee_data):
             break
     
     while True:
-        phone_str = int(input("Enter cost for phone bill:"))
+        phone_str = int(input("Enter cost for phones this month:"))
         phone_data = phone_str
 
         if validate_phone_data(phone_data):
@@ -48,9 +49,9 @@ def collect_data():
     
 def validate_rent_data(rent_data):
     """
-    Function to validate that the data for monthly bills for rent i over 1000SEK. 
-    Prints error if not and return to ask for rent .
-
+    Function to validate that the data for monthly bills for rent is over 
+    1 000 SEK. Prints error if not and return to ask for correct rent. 
+    Otherwise print thank you for the data.
     """
     try:
         if rent_data <= 1000:
@@ -68,13 +69,14 @@ def validate_rent_data(rent_data):
 
 def validate_employee_data(employee_str, employee_data):
     """
-    Function to validate that the data for monthly bills for salary is over 1000000 SEK. 
-    Print error if it is  and return to ask for number of employees.
+    Function to validate that the data for monthly cost for salary is over 
+    1 000 000 SEK. Print error if it is and return to ask for number of 
+    employees. Otherwise print thank you for the data.
     """
     try:
         if employee_data >= 1000000:
             raise ValueError(
-                f"Impossible! With the answer {employee_str}, the cost would be {employee_data} SEK and it is over your budget"
+                f"With the answer {employee_str}, the cost would be {employee_data} SEK and it is over your budget"
             )
         else:
             print(f"You answered {employee_str} and the cost is {employee_data} SEK")
@@ -86,9 +88,9 @@ def validate_employee_data(employee_str, employee_data):
 
 def validate_phone_data(phone_data):
     """
-    Function to validate that the data for monthly bills for phone is over 100 SEK. 
-    Print error if not and return to ask for phone cost.
-
+    Function to validate that the data for monthly bills for phone is over 
+    100 SEK. Print error if not and return to ask for phone cost. Otherwise 
+    print thank you for the data.
     """
     try:
         if phone_data <= 100:
