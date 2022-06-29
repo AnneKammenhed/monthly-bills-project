@@ -134,8 +134,8 @@ def get_6_month_average():
     sum = SHEET.worksheet("sum")
 
     column = sum.col_values(1)
-    #columns.append(column[-6])  
-    print(column)
+    
+    return column[-6:]
 
 def update_average_worksheet(data):
     """
@@ -173,4 +173,4 @@ def main ():
 
 #main()
 
-get_6_month_average()
+print(get_6_month_average())
