@@ -79,7 +79,7 @@ def validate_employee_data(employee_str, employee_data):
                 f"With the answer {employee_str}, the cost would be {employee_data} SEK and it is over your budget"
             )
         else:
-            print(f"You answered {employee_str} and the cost is {employee_data} SEK")
+            print(f"Thank you! You answered {employee_str} and the cost is {employee_data} SEK.")
     except ValueError as e:
         print(f"Invalid data: {e}, please try again!")
         return False
@@ -116,6 +116,8 @@ def update_bills_worksheet(data):
 
 # calculate sum
 
+
+
 # add sum to worksheet
 
 # return sum to user
@@ -124,8 +126,12 @@ def update_bills_worksheet(data):
 
 # return average to user
 
-#remember to call the functions here:
+def main ():
+    """
+    Function to remember to call the functions here:
+    """
+    data = collect_data()
+    cost_data = [int(num) for num in data]
+    update_bills_worksheet(cost_data)
 
-data = collect_data()
-cost_data = [int(num) for num in data]
-update_bills_worksheet(cost_data)
+main()
