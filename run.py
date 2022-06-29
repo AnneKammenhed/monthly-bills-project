@@ -112,7 +112,7 @@ def update_bills_worksheet(data):
     print("Updating worksheet with the bills for this month....")
     bills_worksheet = SHEET.worksheet("bills")
     bills_worksheet.append_row(data)
-    print("This months bills have been updated.")
+    print("This months bills have been updated.\n")
 
 def update_sum_worksheet(data):
     """
@@ -123,10 +123,19 @@ def update_sum_worksheet(data):
     print("Calculating the sum for this month...")
     monthly_sum = [sum(data)]
     sum_worksheet = SHEET.worksheet("sum")
-    sum_worksheet.append_row(data)
-    print(f"This months sum is {monthly_sum} SEK.")
+    sum_worksheet.append_row(monthly_sum)
+    print(f"This months sum is {monthly_sum} SEK.\n")
 
-    return monthly_sum
+def get_6_month_average():
+    """
+    Get the last six entries from sum-worksheet. 
+    Return the data as a list of lists.
+    """
+    sum = SHEET.worksheet("sum")
+
+    column = sum.col_values(1)
+    #columns.append(column[-6])  
+    print(column)
 
 def update_average_worksheet(data):
     """
@@ -134,10 +143,17 @@ def update_average_worksheet(data):
     worksheet and return average to user
     """
     print("Calculating six month average...")
-    six_month_average = sum(data)
-    average_worksheet = SHEET.worksheet("average")
-    average_worksheet.append_row(data)
-    print(f"The average is {six_month_average} SEK.")
+    six_month_average = []
+
+    for column in data:
+        int_column = [int(num) for num in column]
+        average = sum(int_column) / len(int_column)
+        average_num = average * 1.1
+        six_month_average.append(round(average_num))
+
+    print(f"The six month average is {six_month_average} SEK.")
+
+    return six_month_average
 
 def main ():
     """
@@ -148,10 +164,13 @@ def main ():
     cost_data = [int(num) for num in data]
     update_bills_worksheet(cost_data)
     
-    sum_data = update_sum_worksheet(cost_data)
-    update_sum_worksheet(sum_data)
-    
-    average_data = [int(num) for num in data]
+    update_sum_worksheet(cost_data)
+
+    sum_columns = get_last_6_entries_sum()
+    average_data = update_average_worksheet(sum_columns)
     update_average_worksheet(average_data)
 
-main()
+
+#main()
+
+get_6_month_average()
