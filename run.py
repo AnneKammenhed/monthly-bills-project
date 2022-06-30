@@ -137,7 +137,7 @@ def get_last_6_entries():
     
     return column[-6:]
 
-def update_average_worksheet(data):
+def get_average(data):
     """
     Function to calculate six month average, add average to 
     worksheet and return average to user
@@ -150,6 +150,12 @@ def update_average_worksheet(data):
 
     print(f"The six month average is {new_average} SEK.")
 
+    return new_average
+
+    #average_worksheet = SHEET.worksheet("average")
+    #average_worksheet.append(new_average)
+
+
 def main ():
     """
     Function to remember to call the functions here:
@@ -161,9 +167,7 @@ def main ():
     
     update_sum_worksheet(cost_data)
 
-    last_6_sums = get_last_6_entries()
-    update_average_worksheet(last_6_sums)
-    
+    average = get_last_6_entries()
+    get_average(average)
 
 main()
-
