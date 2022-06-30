@@ -146,6 +146,8 @@ def update_average_worksheet(data):
 
     new_average = get_last_6_entries()
 
+    new_average = round(sum([int(i) for i in new_average])/6)
+
     print(f"The six month average is {new_average} SEK.")
 
 def main ():
