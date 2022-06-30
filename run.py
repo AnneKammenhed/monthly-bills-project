@@ -144,18 +144,9 @@ def update_average_worksheet(data):
     """
     print("Calculating six month average...")
 
-    new_average = []
+    new_average = get_last_6_entries()
 
-    for column in data:
-        int_column = [int(num)for num in column]
-        average = sum(int_column) / 6
-        new_average.append(round(average))
-
-    #last_six_entries = get_last_6_entries()
-    
     print(f"The six month average is {new_average} SEK.")
-
-    #return last_six_entries
 
 def main ():
     """
@@ -170,5 +161,7 @@ def main ():
 
     last_6_sums = get_last_6_entries()
     update_average_worksheet(last_6_sums)
+    
 
 main()
+
