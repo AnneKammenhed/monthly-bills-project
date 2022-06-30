@@ -148,13 +148,9 @@ def get_average(data):
 
     new_average = round(sum([int(i) for i in new_average])/6)
 
-    print(f"The six month average is {new_average} SEK.")
-
-    return new_average
-
     #average_worksheet = SHEET.worksheet("average")
     #average_worksheet.append(new_average)
-
+    print(f"The six month average is {new_average} SEK.")
 
 def main ():
     """
