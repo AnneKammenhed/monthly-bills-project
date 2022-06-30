@@ -148,8 +148,6 @@ def get_average(data):
 
     new_average = round(sum([int(i) for i in new_average])/6)
 
-    #average_worksheet = SHEET.worksheet("average")
-    #average_worksheet.append(new_average)
     print(f"The six month average is {new_average} SEK.")
 
 def main ():
@@ -163,7 +161,7 @@ def main ():
     
     update_sum_worksheet(cost_data)
 
-    average = get_last_6_entries()
-    get_average(average)
+    last_6_entries = get_last_6_entries()
+    get_average(last_6_entries)
 
 main()
