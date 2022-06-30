@@ -58,6 +58,7 @@ def validate_rent_data(rent_data):
             raise ValueError(
                 f"You wrote {rent_data} SEK which is too cheap"
             )
+
         else:
             print(f"You wrote {rent_data} SEK. Thank you!")
 
@@ -126,7 +127,7 @@ def update_sum_worksheet(data):
     sum_worksheet.append_row(monthly_sum)
     print(f"This months sum is {monthly_sum} SEK.\n")
 
-def get_6_month_average():
+def get_last_6_entries():
     """
     Return the last six entries from sum-worksheet. 
     """
@@ -143,12 +144,18 @@ def update_average_worksheet(data):
     """
     print("Calculating six month average...")
 
-    last_six_entries = get_6_month_average()
-    #average = [sum(last_six_entries)]
+    new_average = []
 
-    print(f"The six month average is {last_six_entries} SEK.")
+    for column in data:
+        int_column = [int(num)for num in column]
+        average = sum(int_column) / 6
+        new_average.append(round(average))
 
-    return last_six_entries
+    #last_six_entries = get_last_6_entries()
+    
+    print(f"The six month average is {new_average} SEK.")
+
+    #return last_six_entries
 
 def main ():
     """
@@ -161,7 +168,7 @@ def main ():
     
     update_sum_worksheet(cost_data)
 
-    average = get_6_month_average()
-    update_average_worksheet(average)
+    last_6_sums = get_last_6_entries()
+    update_average_worksheet(last_6_sums)
 
 main()
