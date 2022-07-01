@@ -30,7 +30,11 @@ Over the development of the app, different solutions have been tested to solve t
 
 I checked the code in https://www.pythonchecker.com/ and got back a good result. 
 
-One of the trickier parts during the development was that I started off by asking for integers in the input-field (int(input("rent")). An answer in the input field that was not an integer exited the whole app and skipped the while loop that returns the user to the same question. The input for both rent and phone has been changed in late testing of the app. The validator functions check if the inputs are integers and if not, returns the user to the same question. Since the function calculates monthly salary from the number of employee input, this integer requirement is left in the app, even though the solution is not optimal. A word in the input field skips the while loop.
+One of the trickier parts during the development was that I started off by asking for integers in the input-field (int(input("rent")). An answer in the input field that was not an integer exited the whole app and skipped the while loop that returns the user to the same question. 
+
+The input for both rent and phone has been changed in late testing of the app. The validator functions check if the inputs are integers and if not, returns the user to the same question. 
+
+Since the function calculates monthly salary from the number of employee input, this integer requirement is left in the app, even though the solution is not optimal. A word in the input field skips the while loop.
 
 <h2>Deployment</h2>
 

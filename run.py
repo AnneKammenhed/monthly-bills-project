@@ -25,21 +25,21 @@ def collect_data():
     print(f"Welcome! Enter Your monthly bills!\n")
 
     while True:
-        rent_str = input("Enter cost for rent this month:")
+        rent_str = input("Enter cost for rent this month:\n")
         rent_data = rent_str
 
         if validate_rent_data(rent_data):
             break
     
     while True:
-        employee_str = int(input("Enter number of employees this month:"))
+        employee_str = int(input("Enter number of employees this month:\n"))
         employee_data = employee_str*40000
 
         if validate_employee_data(employee_str, employee_data):
             break
     
     while True:
-        phone_str = input("Enter cost for phones this month:")
+        phone_str = input("Enter cost for phones this month:\n")
         phone_data = phone_str
 
         if validate_phone_data(phone_data):
