@@ -25,8 +25,7 @@ def collect_data():
     print(f"Welcome! Enter Your monthly bills!\n")
 
     while True:
-        rent_str = input("Enter cost for rent this month:\n")
-        rent_data = rent_str
+        rent_data = input("Enter cost for rent this month:\n")
 
         if validate_rent_data(rent_data):
             break
@@ -39,8 +38,7 @@ def collect_data():
             break
     
     while True:
-        phone_str = input("Enter cost for phones this month:\n")
-        phone_data = phone_str
+        phone_data = input("Enter cost for phones this month:\n")
 
         if validate_phone_data(phone_data):
             break
@@ -55,7 +53,7 @@ def validate_rent_data(rent_data):
     """
     
     try:
-        if input(int(rent_data)) or int(rent_data) <= 1000:
+        if int(rent_data) <= 1000:
             raise ValueError(f"You wrote {rent_data} SEK wich is lower than 1000 SEK")
 
     except ValueError as e:
@@ -90,7 +88,7 @@ def validate_phone_data(phone_data):
     print thank you for the data.
     """
     try:
-        if input(int(phone_data)) or int(phone_data) <= 100:
+        if int(phone_data) <= 100:
             raise ValueError(
                 f"You answered {phone_data} SEK which is too little"
             )
