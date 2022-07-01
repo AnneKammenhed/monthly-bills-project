@@ -149,15 +149,13 @@ def get_average(data):
     new_average = round(sum([int(i) for i in new_average])/6)
 
     print(f"The six month average is {new_average} SEK.")
-
-def average_to_worksheet():
-    """
-    function to move average to worksheet
-    """
+    
     print("Moving average to worksheet...")
-    average = [12345]
+    average = [new_average]
     average_worksheet = SHEET.worksheet("average")
     average_worksheet.append_row(average)
+
+    return new_average
 
 def main ():
     """
@@ -173,6 +171,7 @@ def main ():
     last_6_entries = get_last_6_entries()
     get_average(last_6_entries)
 
-#main()
+    
 
-average_to_worksheet()
+main()
+
