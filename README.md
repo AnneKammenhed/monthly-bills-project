@@ -28,7 +28,7 @@ A six month average is calculated returned to user. The average is added to work
 <h2>Testing and bugs</h2> 
 Over the development of the app, different solutions have been tested to solve the task. I built out smaller parts of the code in replit. One of the trickier parts was to get the average from the sums and return that number to the last worksheet.
 
-I chose the built in function to ask for integers in the input. Even though the int()-question is in the "while" loop, the app does not loop back to ask for the input again if I answer in words. The app starts over. 
+Another tricky part was that I started off by asking for integers in the input (int(input("number of employees")). An answer in the input field that was not an integer skiped the while loop, even though the int()-question was in the "while" loop. , the app did not loop back to ask for the input again. The app started over. In the finished function I ask for integers in the validate function there is still a built in error message, but the function loops back to ask for a correct input.  
 
 <h2>Credits</h2> 
 Since this is my first Python project, I've taken inspiration from the Love Sandwiches Walkthrough Project. 

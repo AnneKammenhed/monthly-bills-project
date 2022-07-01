@@ -39,7 +39,7 @@ def collect_data():
             break
     
     while True:
-        phone_str = int(input("Enter cost for phones this month:"))
+        phone_str = input("Enter cost for phones this month:")
         phone_data = phone_str
 
         if validate_phone_data(phone_data):
@@ -93,7 +93,7 @@ def validate_phone_data(phone_data):
     print thank you for the data.
     """
     try:
-        if phone_data <= 100:
+        if (input(int(phone_data))) or (int(phone_data) <= 100):
             raise ValueError(
                 f"You answered {phone_data} SEK which is too little"
             )
