@@ -55,11 +55,8 @@ def validate_rent_data(rent_data):
     """
     
     try:
-        if (input(int(rent_data))) or (int(rent_data) <= 1000):
-            raise ValueError(f"You wrote{rent_data} SEK wich is lower than 1000 SEK")
-
-        else:
-            print(f"You wrote {rent_data} SEK. Thank you!")
+        if input(int(rent_data)) or int(rent_data) <= 1000:
+            raise ValueError(f"You wrote {rent_data} SEK wich is lower than 1000 SEK")
 
     except ValueError as e:
         print(f"Invalid data: {e}, please try again!")
@@ -93,12 +90,11 @@ def validate_phone_data(phone_data):
     print thank you for the data.
     """
     try:
-        if (input(int(phone_data))) or (int(phone_data) <= 100):
+        if input(int(phone_data)) or int(phone_data) <= 100:
             raise ValueError(
                 f"You answered {phone_data} SEK which is too little"
             )
-        else:
-            print(f"You wrote {phone_data} SEK. Thank you!")
+
     except ValueError as e:
         print(f"Invalid data: {e}, please try again!")
         return False
